@@ -20,15 +20,11 @@ mbi_ex = st.slider("Tükenmişlik (mbi_ex)", 0.0, 5.0, 2.5)
 mbi_ea = st.slider("Kişisel başarı algısı (mbi_ea)", 0.0, 5.0, 2.5)
 
 # Tahmin butonu
+# Tahmin butonu
 if st.button("Stres Seviyesini Tahmin Et"):
-    user_input = pd.DataFrame({
-        'stud_h': [stud_h],
-        'jspe': [jspe],
-        'qcae_cog': [qcae_cog],
-        'qcae_aff': [qcae_aff],
-        'mbi_ex': [mbi_ex],
-        'mbi_ea': [mbi_ea]
-    })
+    user_input = pd.DataFrame([[
+        stud_h, jspe, qcae_cog, qcae_aff, mbi_ex, mbi_ea
+    ]], columns=['stud_h', 'jspe', 'qcae_cog', 'qcae_aff', 'mbi_ex', 'mbi_ea'])
 
     prediction = model.predict(user_input)[0]
 
