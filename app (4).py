@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -20,13 +19,13 @@ mbi_ex = st.slider("Tükenmişlik (mbi_ex)", 0.0, 5.0, 2.5)
 mbi_ea = st.slider("Kişisel başarı algısı (mbi_ea)", 0.0, 5.0, 2.5)
 
 # Tahmin butonu
-# Tahmin butonu
 if st.button("Stres Seviyesini Tahmin Et"):
-    user_input = pd.DataFrame([[
+    # Özellikleri doğru sırayla ve doğru isimle veriyoruz
+    input_data = pd.DataFrame([[
         stud_h, jspe, qcae_cog, qcae_aff, mbi_ex, mbi_ea
     ]], columns=['stud_h', 'jspe', 'qcae_cog', 'qcae_aff', 'mbi_ex', 'mbi_ea'])
 
-    prediction = model.predict(user_input)[0]
+    prediction = model.predict(input_data)[0]
 
     if prediction == 0:
         st.success("Tahmin: Düşük-Orta Stres 😌")
